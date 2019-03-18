@@ -45,7 +45,22 @@ namespace Plan
 
         public static MKDirectionsMode IdentifierApple(this AppEnum app, ModeEnum mode)
         {
-            throw new ModelNotImplementedException();
+            switch (app)
+            {
+                case AppEnum.AppleMaps:
+                    switch (mode)
+                    {
+                        case ModeEnum.Walking:
+                            return MKDirectionsMode.Walking;
+                        case ModeEnum.Driving:
+                        case ModeEnum.Taxi:// it is supported, but there's no key for this...
+                            return MKDirectionsMode.Driving;
+                        case ModeEnum.Transit:
+                            return MKDirectionsMode.Transit;
+                        default: return MKDirectionsMode.Default;
+                    }
+                default: return MKDirectionsMode.Default;
+            }
         }
 
         public static string Identifier(this AppEnum app, ModeEnum mode)
