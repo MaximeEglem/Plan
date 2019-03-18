@@ -31,7 +31,16 @@ namespace Plan
 
         public static bool Supports(this AppEnum app, ModeEnum mode)
         {
-            throw new ModelNotImplementedException();
+            if (mode == ModeEnum.Default)
+                return true;
+            switch (app)
+            {
+                case AppEnum.AppleMaps:
+                    return mode != ModeEnum.Bicycling;
+                case AppEnum.GoogleMaps:
+                    return true;
+                default: return false;
+            }
         }
 
         public static MKDirectionsMode IdentifierApple(this AppEnum app, ModeEnum mode)
