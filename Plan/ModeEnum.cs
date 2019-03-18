@@ -2,6 +2,11 @@
 {
     public enum ModeEnum
     {
+        Walking,
+        Bicycling,
+        Driving,
+        Transit,
+        Taxi,
         Default
     }
 }
