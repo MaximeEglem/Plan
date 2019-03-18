@@ -65,7 +65,34 @@ namespace Plan
 
         public static string Identifier(this AppEnum app, ModeEnum mode)
         {
-            throw new ModelNotImplementedException();
+            switch (app)
+            {
+                case AppEnum.AppleMaps:
+                    switch (mode)
+                    {
+                        case ModeEnum.Walking:
+                            return MKDirectionsMode.Walking.ToString();
+                        case ModeEnum.Driving:
+                        case ModeEnum.Taxi:// it is supported, but there's no key for this...
+                            return MKDirectionsMode.Driving.ToString();
+                        case ModeEnum.Transit:
+                            return MKDirectionsMode.Transit.ToString();
+                        default: return null;
+                    }
+                case AppEnum.GoogleMaps:
+                    switch (mode)
+                    {
+                        case ModeEnum.Walking:
+                            return "walking";
+                        case ModeEnum.Bicycling:
+                            return "bicycling";
+                        case ModeEnum.Driving:
+                        case ModeEnum.Taxi: // it is supported, but there's no key for this...
+                            return "driving";
+                        case ModeEnum.Transit:
+                            return "transit";
+                        default: return null;
+                    }
+                default: return null;
+            }
         }
-    }
-}
