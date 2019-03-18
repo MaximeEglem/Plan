@@ -19,7 +19,14 @@ namespace Plan
 
         public static string Name(AppEnum app)
         {
-            throw new ModelNotImplementedException();
+            switch (app)
+            {
+                case AppEnum.AppleMaps:
+                    return "Apple Maps";
+                case AppEnum.GoogleMaps:
+                    return "Google Maps";
+                default: return string.Empty;
+            }
         }
 
         public static bool Supports(this AppEnum app, ModeEnum mode)
