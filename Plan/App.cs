@@ -1,4 +1,4 @@
-﻿using Foundation;
+using Foundation;
 using MapKit;
 
 namespace Plan
@@ -7,7 +7,14 @@ namespace Plan
     {
         public static string UrlScheme(this AppEnum app)
         {
-            throw new ModelNotImplementedException();
+            switch (app)
+            {
+                case AppEnum.AppleMaps:
+                    return string.Empty;
+                case AppEnum.GoogleMaps:
+                    return "comgooglemaps://";
+                default: return null;
+            }
         }
 
         public static string Name(AppEnum app)
